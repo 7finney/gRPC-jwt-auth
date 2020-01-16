@@ -17,13 +17,13 @@ type CallInterface struct {
 
 func main() {
 	// conn, err := grpc.Dial("localhost:4040", grpc.WithInsecure())
-	conn, err := grpc.Dial("localhost:50053", grpc.WithInsecure())
+	conn, err := grpc.Dial("clientcallapi.localhost:50053", grpc.WithInsecure())
 	if err != nil {
 		panic(err)
 	}
 	defer conn.Close()
 	client := eth_client_call.NewClientCallServiceClient(conn)
-	header := metadata.New(map[string]string{"authorization": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJtYWNoaW5lSUQiOiJxd2VydHkifQ.sqrLwRfVbxAxpq0kVEK238TlZoXLONAoy57Felg_9o"})
+	header := metadata.New(map[string]string{"authorization": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJtYWNoaW5lSUQiOiJzYmRjamtjYmtqYSJ9.84g5qDtLy06eGlG0ztU1iTBmLojTZ6g4rjN1f5YLVC"})
 	ctx := metadata.NewOutgoingContext(context.Background(), header)
 	ci := &eth_client_call.ClientCallInterface{
 		Command: "deploy-contract",

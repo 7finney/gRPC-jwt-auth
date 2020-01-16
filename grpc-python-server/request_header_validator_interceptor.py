@@ -19,7 +19,7 @@ class RequestHeaderValidatorInterceptor(grpc.ServerInterceptor):
 
     def intercept_service(self, continuation, handler_call_details):
         print("handler call details: ", handler_call_details.invocation_metadata)
-        authToken = handler_call_details.invocation_metadata[1][1]
+        authToken = handler_call_details.invocation_metadata[0][1]
         print("authToken: ", authToken)
         if (len(authToken) > 0):
             return continuation(handler_call_details)
